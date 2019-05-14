@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tabela</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section class="content">
+        <aside>
+            <div class="filter-container">
+                <h4 class="cont">Szukaj według:</h4>
+                <h4>imię/nazwisko</h4>
+                <input id="personFilter" type="text" placeholder="imię / nazwisko ..." />
+
+                <h4>dział</h4>
+                <div id="filterType"></div>
+
+                <h4>wynagrodzenie (kwota)</h4>
+                <input id="minSalaryFilter" type="number" placeholder="min..." />
+                <input id="maxSalaryFilter" type="number" placeholder="max..." />
+                <button id="showSalary">Filtruj</button>
+
+                <h4 class="cont">Dodaj pracownika</h4>
+                <form id="newPerson">
+                    <input id="name" type="text" placeholder="imię..." />
+                    <input id="surname" type="text" placeholder="nazwisko..." />
+                    <input id="department" type="text" placeholder="dział..." />
+                    <input id="salary" type="number" min="0" placeholder="wyngrodzenie..." />
+                    <input id="currency" type="text" placeholder="waluta..." />
+
+                    <button type="submit">Dodaj</button>
+                </form>
+            </div>
+        </aside>
+        <article>
+            <p class="title">Tabela danych pracowników</p>
+            <table></table>
+            <div class="summary"></div>
+        </article>
+    </section>
+
+
+
+
+    <script src="main-code.js"></script>
+</body>
+
+</html>
