@@ -35,7 +35,7 @@ let array = [{
     },
 ];
 
-array = localStorage.getItem('employees') ? JSON.parse(localStorage.getItem('employees')) : []
+// array = localStorage.getItem('employees') ? JSON.parse(localStorage.getItem('employees')) : []
 
 
 localStorage.setItem('employees', JSON.stringify(array));
