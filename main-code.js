@@ -35,12 +35,6 @@ let array = [{
     },
 ];
 
-// array = localStorage.getItem('employees') ? JSON.parse(localStorage.getItem('employees')) : []
-
-
-localStorage.setItem('employees', JSON.stringify(array));
-const data = JSON.parse(localStorage.getItem('employees'));
-
 
 const table = document.querySelector("table");
 const filters = document.querySelector('#filterType');
@@ -136,10 +130,21 @@ document.querySelector('#newPerson').addEventListener('submit', (e) => {
 
     document.querySelector('#newPerson').reset();
     array.push(personData);
-    localStorage.setItem('employees', JSON.stringify(array));
-    window.onload();
-    e.preventDefault();
 
+    let newRow = `<tr>
+                        <td data-key="${name}">${nameP}</td>
+                        <td data-key="${surname}">${surname}</td>
+                        <td data-key="${department}">${department}</td>
+                        <td data-key="${salary}">${salary}</td>
+                        <td data-key="${currency}">${currency}</td>
+                        </tr> `;
+    table.lastElementChild.insertAdjacentHTML('beforeend', newRow);
+
+    summary.innerHTML = ' ';
+    filters.innerHTML = ' ';
+    getDepartments('dzial', array);
+    getKey('dzial', array);
+    e.preventDefault();
 })
 
 function validation(nameP, surname, department, salary, currency) {
@@ -209,7 +214,6 @@ document.querySelector('#personFilter').addEventListener('keyup', filterPerson, 
 
 
 const summary = document.querySelector('div.summary');
-const totalSalary = array.reduce((acc, salary) => acc + salary.wynagrodzenie, 0);
 
 
 function getDepartments(target, array) {
@@ -240,6 +244,7 @@ function getDepartments(target, array) {
             summary.lastElementChild.insertAdjacentHTML('beforeend', chk);
         });
     };
+    const totalSalary = array.reduce((acc, salary) => acc + salary.wynagrodzenie, 0);
     summary.insertAdjacentHTML('beforeend', `<div class="dataSummary"><h4>Suma wszystkich wynagrodzeń <font color="#ff5656">${totalSalary} PLN</font></h4><span></span></fieldset>`)
     createDepartments(keyArray);
 }
