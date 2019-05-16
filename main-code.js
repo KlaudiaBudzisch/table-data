@@ -35,8 +35,12 @@ let array = [{
     },
 ];
 
-array = JSON.parse(localStorage.getItem('employees'));
-localStorage.setItem("employees", JSON.stringify(array));
+array = localStorage.getItem('employees') ? JSON.parse(localStorage.getItem('employees')) : []
+
+
+localStorage.setItem('employees', JSON.stringify(array));
+const data = JSON.parse(localStorage.getItem('employees'));
+
 
 const table = document.querySelector("table");
 const filters = document.querySelector('#filterType');
@@ -129,13 +133,14 @@ document.querySelector('#newPerson').addEventListener('submit', (e) => {
         waluta: currency
     }
 
+
     document.querySelector('#newPerson').reset();
     array.push(personData);
     localStorage.setItem('employees', JSON.stringify(array));
+    window.onload();
     e.preventDefault();
-    window.location.reload();
-})
 
+})
 
 function validation(nameP, surname, department, salary, currency) {
     if (!nameP || !surname || !department || !salary || !currency) {
